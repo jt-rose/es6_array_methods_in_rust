@@ -20,7 +20,7 @@ fn main() {
     }
 
     // test boolean result
-    let result = es6.some();
+    let result = es6.every();
     println!("Result found was: {}", result);
 
     println!("Hello, ES6 in Rust!");
@@ -78,6 +78,13 @@ impl SampleArray {
     pub fn some(&self) -> bool {
         self.numbers.iter().any(|num| {
             *num == 3
+        })
+    }
+
+    // every
+    pub fn every(&self) -> bool {
+        self.numbers.iter().all(|num| {
+            *num < 10
         })
     }
 }
