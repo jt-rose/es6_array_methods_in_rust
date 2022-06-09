@@ -23,6 +23,10 @@ fn main() {
     let result = es6.every();
     println!("Result found was: {}", result);
 
+    // test integer result
+    let sum_of_numbers = es6.reduce_as_fold();
+    println!("the amount is {}", sum_of_numbers);
+
     println!("Hello, ES6 in Rust!");
 }
 
@@ -85,6 +89,18 @@ impl SampleArray {
     pub fn every(&self) -> bool {
         self.numbers.iter().all(|num| {
             *num < 10
+        })
+    }
+
+    // reduce as sum
+    pub fn reduce_to_sum(&self) -> i8 {
+        self.numbers.iter().sum()
+    }
+
+    // reduce as fold
+    pub fn reduce_as_fold(&self) -> i8 {
+        self.numbers.iter().fold(0, |acc, num| {
+            acc + *num
         })
     }
 }
