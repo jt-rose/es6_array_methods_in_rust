@@ -8,7 +8,7 @@ fn main() {
     let es6 = SampleArray::new();
     es6.map().iter().for_each(|x| { println!("{}", x)});
 
-    let optional_result = es6.find();
+    let optional_result = es6.findIndex();
 
     if let Some(result) = optional_result {
         println!("result found was {}", result);
@@ -57,6 +57,13 @@ impl SampleArray {
     pub fn find(&self) -> Option<&i8> {
         self.numbers.iter().find(|num| {
             **num == 3
+        })
+    }
+
+    // findIndex
+    pub fn findIndex(&self) -> Option<usize> {
+        self.numbers.iter().position(|num| {
+            *num == 3
         })
     }
 }
