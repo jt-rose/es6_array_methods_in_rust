@@ -6,7 +6,15 @@ fn main() {
     // feel free to  test the code in the main function!
     // forEach is demonstrated below
     let es6 = SampleArray::new();
-    es6.filter().iter().for_each(|x| { println!("{}", x)});
+    es6.map().iter().for_each(|x| { println!("{}", x)});
+
+    let optional_result = es6.find();
+
+    if let Some(result) = optional_result {
+        println!("result found was {}", result);
+    } else {
+        println!("No result found");
+    }
 
     println!("Hello, ES6 in Rust!");
 }
@@ -45,5 +53,10 @@ impl SampleArray {
         }).collect()
     }
 
-
+    // find
+    pub fn find(&self) -> Option<&i8> {
+        self.numbers.iter().find(|num| {
+            **num == 3
+        })
+    }
 }
