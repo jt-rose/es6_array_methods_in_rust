@@ -5,9 +5,12 @@
 fn main() {
     // feel free to  test the code in the main function!
     // forEach is demonstrated below
+
+    // test vector result
     let es6 = SampleArray::new();
     es6.map().iter().for_each(|x| { println!("{}", x)});
 
+    // test optional result
     let optional_result = es6.findIndex();
 
     if let Some(result) = optional_result {
@@ -15,6 +18,10 @@ fn main() {
     } else {
         println!("No result found");
     }
+
+    // test boolean result
+    let result = es6.some();
+    println!("Result found was: {}", result);
 
     println!("Hello, ES6 in Rust!");
 }
@@ -63,6 +70,13 @@ impl SampleArray {
     // findIndex
     pub fn findIndex(&self) -> Option<usize> {
         self.numbers.iter().position(|num| {
+            *num == 3
+        })
+    }
+
+    // some
+    pub fn some(&self) -> bool {
+        self.numbers.iter().any(|num| {
             *num == 3
         })
     }
