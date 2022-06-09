@@ -6,7 +6,7 @@ fn main() {
     // feel free to  test the code in the main function!
     // forEach is demonstrated below
     let es6 = SampleArray::new();
-    es6.map().iter().for_each(|x| { println!("{}", x)});
+    es6.filter().iter().for_each(|x| { println!("{}", x)});
 
     println!("Hello, ES6 in Rust!");
 }
@@ -17,6 +17,7 @@ fn main() {
 
 // for all of these, the iter() method is used to create an iterator
 // which then gives access to these various methods
+// finally, collect() is used at the end to gather the data into a new vector
 
 struct SampleArray {
     numbers: Vec<i8>
@@ -34,6 +35,13 @@ impl SampleArray {
     pub fn map(&self) -> Vec<i8> {
         self.numbers.iter().map(|num| {
             num * 2
+        }).collect()
+    }
+
+    // filter
+    pub fn filter(&self) -> Vec<&i8> {
+        self.numbers.iter().filter(|num| {
+            *num % 2 == 0
         }).collect()
     }
 
